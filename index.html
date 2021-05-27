@@ -9,92 +9,19 @@
 </head>
 <body>
     <div id="vue-app">
-        <h1> {{greet('afternoon')}}</h1>
-        <p>Name: {{ name }}</p>
-        <p>job: {{ job }}</p>
-        <a v-bind:href='website'>BATATA</a>
+         <!-- bag image -->
+         <div id="bag" v-bind:class="{ burst: ended }"></div>
 
-        <h1>Data Binding</h1>
-        <p><a v-bind:href="website">BATATA</a></p>
-        <p v-html="websiteTag"></p>
-        <p><input type="text" v-bind:value="name" /></p>
-        
+         <!-- bag health bar -->
+         <div id="bag-health">
+             <div v-bind:style="{ width: health + '%' }"></div>
+         </div>
 
-        <h1>Events</h1>
-        <button @click="add(1)">Add a Year</button>
-        <button v-on:click="subtract(1)">Subtract a Year</button>
-        <button @dblclick="add(10)">Add 10 Years</button>
-        <button v-on:dblclick="subtract(10)">Subtract 10 Years</button>
-        <p>My age is {{age}}</p>
-        <div id="canvas" v-on:mousemove="updateXY">{{ x }} , {{ y }}</div>
-        <!-- <button v-on:click="age ++">Add a Year</button>
-        <button v-on:click="age --">Subtract a Year</button>
-        {{age}} -->
-
-        <h1>Keyboard Events</h1>
-            <label>Name:</label>
-            <input type="text" v-on:keyup.enter="logName" />
-            <label>Age:</label>
-            <input type="text" v-on:keyup.alt.enter="logAge" />
-            <br>
-            <br>
-            <br>
-            <label>Name:</label>
-            <input type="text" v-on:keyup.enter="logName" v-model="name2" />
-            <h5>{{ name2 }}</h5>
-            <label>Age:</label>
-            <input type="text" v-on:keyup.alt.enter="logAge" v-model="age2" />
-            <h5>{{ age2 }}</h5>
-
-            <h1>Computed Properties</h1>
-            <button v-on:click="a++">Add to A</button>
-            <button v-on:click="b++">Add to B</button>
-            <p>A - {{ a }}</p>
-            <p>B - {{ b }}</p>
-            <p>Age + A = {{ addToA }}</p>
-            <p>Age + B = {{ addToB }}</p>
-
-
-            <h1>Dynamic CSS</h1>
-            <h2>Example 1</h2>
-            <div v-on:click="available = !available" v-bind:class="{available: available}">
-                <span>Ryu</span>
-            </div>
-            <h2>Example 2</h2>
-            <button v-on:click="nearby = !nearby">Toggle nearby</button>
-            <button v-on:click="available = !available">Toggle available</button>
-            <div v-bind:class="compClasses">
-                <span>Ryu</span>
-            </div>
-
-            <h1>Conditionals</h1>
-            <button v-on:click="error = !error">Toggle error</button>
-            <button v-on:click="success = !success">Toggle success</button>
-            <!-- <p v-if="error" class="error">There has been an error</p>
-            <p v-else-if="success" class="success">Whooo, success :)</p> -->
-            <p v-show="error" class="error">There has been an error</p>
-            <p v-show="success" class="success">Whooo, success :)</p>
-
-
-            <h1>Looping through lists</h1>
-            <ul>
-                <li v-for="character in characters">{{ character }}</li>
-            </ul>
-            <ul>
-                <li v-for="(ninja, index) in ninjas">{{ index }} . {{ ninja.name }} - {{ ninja.age }}</li>
-            </ul>
-            <div v-for="(ninja, index) in ninjas">
-                <h3>{{ index }} . {{ ninja.name }}</h3>
-                <p>Age - {{ ninja.age }}</p>
-            </div>
-            <template v-for="ninja in ninjas">
-                <div v-for="(val, key) in ninja">
-                    <p>{{key}} : {{val}}</p>
-                </div>
-                <hr />
-            </template>
-
-
+         <!-- game control buttons -->
+         <div id="controls">
+             <button v-on:click="punch" v-show="!ended">Punch</button>
+             <button v-on:click="restart">Restart</button>
+         </div>
 
     </div>
 </body>
