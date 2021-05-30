@@ -8,21 +8,14 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
 <body>
-    <h1>Templates</h1>
+    <h1>Refs</h1>
     <div id="vue-app-one">
-        <h1>Vue App One</h1>
-        <greeting></greeting>
+        <input type="text" ref="input" />
+        <button v-on:click="readRefs">Submit</button>
+        <p>your fav food is : {{ output }}</p>
+        <div ref ="test"></div>
     </div>
-    <div id="vue-app-two">
-        <h1>Vue App Two</h1>
-        <greeting></greeting>
-    </div>
-    <div id="vue-app-three">
-        <h1>Vue App Three</h1>
-        <test></test>
-    </div>
-    <!--<div class="test"></div>
-    <div class="test"></div> -->
+
 </body>
 <script src="app.js"></script>
 </html>
